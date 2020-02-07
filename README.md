@@ -7,8 +7,8 @@
 This exam, like many exams before it, will be an **open-book, project-driven exam**.
 
 - You are permitted the use of online resources, including your notes.
-- **You are not permitted to discuss the exam with your peers or to share code.** If you have questions, or would like to discuss details of the exam, please talk to an instructor or TA.
-  - Instructors will explicitly look for similiar code.
+- **You are not permitted to discuss the exam with your peers or to share code.** If you have questions, or would like to discuss details of the exam, please talk to an instructor or IA.
+  - Instructors will explicitly look for similar code.
 - You are welcome (encouraged, required) to utilize GitHub and Git for this exam. Until the conclusion of the exam period, please **make your repositories private** and invite the staff as collaborators to your repo.
 - As you continue to work through this project make regular commits because we will be monitoring your commit history for code consistency and educational integrity.
 
@@ -118,3 +118,7 @@ Your frontend must include the following routes/pages. Note that these are not a
     - FSW.11.b
 - FSW.14
     - FSW.14.c
+
+## Rubric
+
+![rubric](/WebCTARubric.png)
