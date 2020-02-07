@@ -121,4 +121,4 @@ Your frontend must include the following routes/pages. Note that these are not a
 
 ## Rubric
 
-![rubric](/rubric.png)
+![rubric](/WebCTARubric.png)
