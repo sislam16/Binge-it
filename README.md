@@ -118,3 +118,7 @@ Your frontend must include the following routes/pages. Note that these are not a
     - FSW.11.b
 - FSW.14
     - FSW.14.c
+
+## Rubric
+
+![rubric](/rubric.png)
