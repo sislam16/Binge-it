@@ -107,9 +107,10 @@ Find wireframes [here](./wireframes.pdf).
 
 ## Submission Guidelines
 
-* Create a new **private** repository (or two, depending on how you choose to architect your application) on your github. Invite the pursuit staff as collaborators so they can view your progress.
+* Create a new **private** repository (or two, depending on how you choose to architect your application) on your GitHub. Invite all your instructor as collaborators so they can view your progress.
+* As soon as you have created your repo(s) submit the link(s) on [canvas for this assignment](https://canvas.instructure.com/courses/1605748/assignments/13722707)
 * Build your application, making regular, descriptive commits!
-* When finished, make a **new issue** on this repository. Make the title of the issue your name, and copy paste the link(s) to your repo(s) in the body of the issue. If you deployed your app, also include the links to the deployed versions.
+* When finished, submit on [canvas for this assignment](https://canvas.instructure.com/courses/1605748/assignments/13709184) the link(s) to your repo(s). If you deployed your app, also include the links to the deployed versions.
 * Mention anything you'd like specific feedback on.
 
 ## BONUS (pick one or more!)
