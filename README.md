@@ -55,21 +55,37 @@ The following tables and columns will be necessary:
 Your API Endpoints should include at least:
 
 - **Users**
-  - GET all users
-  - GET single user
-  - POST new user
+
+  | Method | Endpoint     | Description           | Body Data                |
+  | ------ | ------------ | --------------------- | ------------------------ |
+  | GET    | `/users`     | Get all users         | n/a                      |
+  | GET    | `/users/:id` | Get single user by id | n/a                      |
+  | POST   | `/users/`    | Add new user          | `avatar_url`, `username` |
+
 - **Genres**
-  - GET all genres
-  - POST new genre
+
+  | Method | Endpoint  | Description    | Body Data    |
+  | ------ | --------- | -------------- | ------------ |
+  | GET    | `/genres` | Get all genres | n/a          |
+  | POST   | `/genres` | Add new genre  | `genre_name` |
+
 - **Shows**
-  - GET all shows
-  - GET all shows for specific genre_id
-  - GET all shows for specific user_id
-  - GET one show
-  - POST new show
+
+  | Method | Endpoint                 | Description                         | Body Data                                 |
+  | ------ | ------------------------ | ----------------------------------- | ----------------------------------------- |
+  | GET    | `/shows`                 | Get all shows                       | n/a                                       |
+  | GET    | `/shows/:id`             | Get single show by id               | n/a                                       |
+  | POST   | `/shows`                 | Add new show                        | `title`, `img_url`, `user_id`, `genre_id` |
+  | GET    | `/shows/genre/:genre_id` | Get all shows for specific genre_id | n/a                                       |
+  | GET    | `/shows/user/:user_id`   | Get all shows for specific user_id  | n/a                                       |
+
 - **Comments**
-  - GET all comments for specific show_id
-  - POST new comment
+
+  | Method | Endpoint                  | Description                           | Body Data                            |
+  | ------ | ------------------------- | ------------------------------------- | ------------------------------------ |
+  | GET    | `/comments/show/:show_id` | Get all comments for specific show_id | n/a                                  |
+  | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` |
+
 
 ## Frontend
 
