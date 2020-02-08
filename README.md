@@ -29,15 +29,19 @@ The following tables and columns will be necessary:
 - **Users**
   - id
   - username - _Unique_
+  - avatar_url 
+
 - **Genres**
   - id
   - genre_name - _Unique_
+
 - **Shows**
   - id
   - title
   - img_url
   - user_id - _References Users_
   - genre_id - _References Genres_
+
 - **Comments**
   - id
   - comment_body
