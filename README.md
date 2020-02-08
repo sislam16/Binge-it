@@ -89,13 +89,16 @@ Your frontend must include the following routes/pages. Note that these are not a
 
 ## BONUS (pick one or more!)
 
+**DO ATTEMPT ANY OF THESE UNLESS YOU ARE DONE WITH THE SPECIFICATIONS WE ASKED FOR IN YOUR APP ABOVE**
+
+- There is some repetition going on in your database, more specifically in the `shows` table. Create a separate `shows_users` table with columns `id`, `user_id` and `show_id` that associates users with shows. If a user is adding a show, check that the show is not already in the `shows` table. If the show is in the `shows` table just associate such user with that `show` in the `show_users` otherwise add the show to the `shows` table and also the association in the `shows_users` table. Adjust your routes and queries to make this still comply with the specifications.
 - Deploy your application on heroku & netlify
 - Make one of your endpoints (e.g. comments or users) support full CRUD using all 4 HTTP verb methods:
     - GET for Read
     - POST for Create
     - PUT for Update
     - DELETE for Delete
-- Use redux for your state management library instead of just using stateful components
+- Use redux for your state management 
 - Add user authentication so that users can register and sign in.
 
 ## Standards
