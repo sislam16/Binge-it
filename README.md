@@ -39,8 +39,12 @@ The following tables and columns will be necessary:
   - id
   - title
   - img_url
-  - user_id - _References Users_
   - genre_id - _References Genres_
+
+- **Shows_Users** 
+  - id
+  - user_id - _References Users_
+  - show_id - _References Shows_
 
 - **Comments**
   - id
@@ -56,22 +60,22 @@ Your API Endpoints should include at least:
 
 - **Users**
 
-  | Method | Endpoint     | Description           | Body Data                |
-  | ------ | ------------ | --------------------- | ------------------------ |
-  | GET    | `/users`     | Get all users         | n/a                      |
-  | GET    | `/users/:id` | Get single user by id | n/a                      |
-  | POST   | `/users/`    | Add new user          | `avatar_url`, `username` |
+  | Method | Endpoint     | Description           | Properties sent in JSON body |
+  | ------ | ------------ | --------------------- | ---------------------------- |
+  | GET    | `/users`     | Get all users         | n/a                          |
+  | GET    | `/users/:id` | Get single user by id | n/a                          |
+  | POST   | `/users`     | Add new user          | `avatar_url`, `username`     |
 
 - **Genres**
 
-  | Method | Endpoint  | Description    | Body Data    |
-  | ------ | --------- | -------------- | ------------ |
-  | GET    | `/genres` | Get all genres | n/a          |
-  | POST   | `/genres` | Add new genre  | `genre_name` |
+  | Method | Endpoint  | Description    | Properties sent in JSON body |
+  | ------ | --------- | -------------- | ---------------------------- |
+  | GET    | `/genres` | Get all genres | n/a                          |
+  | POST   | `/genres` | Add new genre  | `genre_name`                 |
 
 - **Shows**
 
-  | Method | Endpoint                 | Description                         | Body Data                                 |
+  | Method | Endpoint                 | Description                         | Properties sent in JSON body              |
   | ------ | ------------------------ | ----------------------------------- | ----------------------------------------- |
   | GET    | `/shows`                 | Get all shows                       | n/a                                       |
   | GET    | `/shows/:id`             | Get single show by id               | n/a                                       |
@@ -81,7 +85,7 @@ Your API Endpoints should include at least:
 
 - **Comments**
 
-  | Method | Endpoint                  | Description                           | Body Data                            |
+  | Method | Endpoint                  | Description                           | Properties sent in JSON body         |
   | ------ | ------------------------- | ------------------------------------- | ------------------------------------ |
   | GET    | `/comments/show/:show_id` | Get all comments for specific show_id | n/a                                  |
   | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` |
@@ -92,18 +96,18 @@ Your API Endpoints should include at least:
 Your frontend must include the following routes/pages. Note that these are not all the routes that may be required, these are just the frontend routes that display something.
 
 ### Routes
-| Route                         | Feature                                                                                                                                                                                                                                                                                                    |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`/`**                       | Home route. Should just welcome the user to the application. Must include Navbar, links, display message.                                                                                                                                                                                                  |
-| **`/users`**                  | Shows master list of all users. Shows the "logged in" user. Should be able to click on each username linking to the user profile page.                                                                                                                                                                     |
-| **`/users/:id`**              | User profile page. Shows all the shows the user is watching. Must show the image, title, genre. Should be able to click on the show and take you to the show page.                                                                                                                                         |
-| **`/users/:id/addShow`**      | Shows a form where the logged in user can add a new show. Should be able to submit to the Database. These changes are reflected app wide. Selecting the genre is a drop down. This data should be reflecting the genres in the database.                                                                   |
-| **`/shows`**                  | Masterlist of all the shows. **Don't repeat the same show twice.** For each show list all the users who are watching. Clicking on the name of the user takes you to that specific users' show profile page. We are assuming that the name of the show has to match exactly to be considered the same show. |
-| **`/shows/:id/user/:userId`** | A specific show's profile page for a specific user. Shows the title, image, genre, number of comments and list of comments. Allows you to add new comments. The comment should be reflected immediately on the list without needing to refresh the page.                                                   |
-| **`/about`**                  | Shows short description of what this app is about and who made it                                                                                                                                                                                                                                          |
+| Route        | Feature                                                                                                                                                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`          | Home route. Should just welcome the user to the application. Must include Navbar, links, display message.                                                                                                                                                         |
+| `/users`     | Shows master list of all users. Shows the "logged in" user. Should be able to click on each username linking to the user profile page.                                                                                                                            |
+| `/users/:id` | User profile page. Shows all the shows the user is watching. Must show the image, title, genre for each show. Users should be able to click on the show and take you to the show page.                                                                            |
+| `/shows`     | Masterlist of all the shows. For each show list all the users who are watching. Clicking on the name of the user takes you to that specific users profile page.                                                                                                   |
+| `/shows/add` | Shows a form where the logged in user can add a new show. Should be able to submit to the Database. These changes are reflected app wide. Selecting the genre is a drop down. This data should be reflecting the genres in the database.                          |
+| `/shows/:id` | A specific show's profile page. Shows the title, image, genre, number of comments and list of comments. Allows you to add new comments. The comment should be reflected immediately on the list without needing to refresh the page when a new comments is added. |
+| `/about`     | Shows short description of what this app is about and who made it                                                                                                                                                                                                 |
 
 ### Wireframes 
-Find wireframes [here](./wireframes.pdf).
+Find wireframes [here](./assets/TV%20Watchlist%20App%20Wireframes.pdf).
 
 ## Submission Guidelines
 
@@ -117,7 +121,6 @@ Find wireframes [here](./wireframes.pdf).
 
 **DO ATTEMPT ANY OF THESE UNLESS YOU ARE DONE WITH THE SPECIFICATIONS WE ASKED FOR IN YOUR APP ABOVE**
 
-- There is some repetition going on in your database, more specifically in the `shows` table. Create a separate `shows_users` table with columns `id`, `user_id` and `show_id` that associates users with shows. If a user is adding a show, check that the show is not already in the `shows` table. If the show is in the `shows` table just associate such user with that `show` in the `show_users` otherwise add the show to the `shows` table and also the association in the `shows_users` table. Adjust your routes and queries to make this still comply with the specifications.
 - Deploy your application on heroku & netlify
 - Make one of your endpoints (e.g. comments or users) support full CRUD using all 4 HTTP verb methods:
     - GET for Read
