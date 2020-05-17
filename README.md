@@ -120,7 +120,7 @@ Find wireframes [here](./assets/TV%20Watchlist%20App%20Wireframes.pdf).
 
 ## BONUS (pick one or more!)
 
-**DO ATTEMPT ANY OF THESE UNLESS YOU ARE DONE WITH THE SPECIFICATIONS WE ASKED FOR IN YOUR APP ABOVE**
+⚠️ **DO NOT ATTEMPT ANY OF THESE UNLESS YOU ARE DONE WITH THE SPECIFICATIONS WE ASKED FOR IN YOUR APP ABOVE** ⚠️ 
 
 - Deploy your application on heroku & netlify
 - Make one of your endpoints (e.g. comments or users) support full CRUD using all 4 HTTP verb methods:
