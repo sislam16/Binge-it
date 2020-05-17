@@ -26,27 +26,27 @@ TV Show Watchlist will be a full-stack application where users can post, comment
 The following tables and columns will be necessary:
 ![database schema diagram](./assets/schema_diagram.png)
 
-- **Users**
+- **users**
   - id
   - username - _Unique_
   - avatar_url 
 
-- **Genres**
+- **genres**
   - id
   - genre_name - _Unique_
 
-- **Shows**
+- **shows**
   - id
   - title
   - img_url
   - genre_id - _References Genres_
 
-- **Shows_Users** 
+- **users_shows** 
   - id
   - user_id - _References Users_
   - show_id - _References Shows_
 
-- **Comments**
+- **comments**
   - id
   - comment_body
   - user_id - _References Users_
