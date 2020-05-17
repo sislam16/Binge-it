@@ -90,6 +90,7 @@ Your API Endpoints should include at least:
   | GET    | `/comments/show/:show_id` | Get all comments for specific show_id | n/a                                  |
   | POST   | `/comments`               | Add new comment                       | `comment_body`, `user_id`, `show_id` |
 
+✅ You can add more endpoints for your convenience or as you realize the data needs of the frontend.
 
 ## Frontend
 
