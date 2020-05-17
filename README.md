@@ -130,6 +130,7 @@ Find wireframes [here](./assets/TV%20Watchlist%20App%20Wireframes.pdf).
     - DELETE for Delete
 - Use redux for your state management 
 - Add user authentication so that users can register and sign in.
+- Make it mobile responsive. Nothing brakes or looks awkward or off the screen on at least three different screen sizes.
 
 ## Standards
 
