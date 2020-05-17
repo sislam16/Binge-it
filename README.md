@@ -94,7 +94,7 @@ Your API Endpoints should include at least:
 
 ## Frontend
 
-Your frontend must include the following routes/pages. Note that these are not all the routes that may be required, these are just the frontend routes that display something.
+Your frontend must include the following routes/pages. 
 
 ### Routes
 | Route        | Feature                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
