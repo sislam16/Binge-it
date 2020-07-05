@@ -22,6 +22,10 @@ router.post('/', async(req, res, next) =>{
    
     try{
         let newComment = await commentsQueries.postComment(comment_body, user_id, show_id)
+        res.json({
+            payload: newComment, 
+            message: 'Success. Comment has been posted.'
+        })
 
     } catch(error){
         res.status(500).json({
