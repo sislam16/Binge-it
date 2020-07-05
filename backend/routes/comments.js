@@ -4,7 +4,7 @@ const commentsQueries = require('../queries/shows')
 
 router.get('/', async(req, res, next) =>{
     try{
-        let getShowComments = await commentsQueries.
+        let getShowComments = await commentsQueries.getCommentsByShow()
     } catch(error){
         res.status(500).json({
             payload: null, 
