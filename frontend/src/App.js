@@ -10,9 +10,9 @@ import About from './Components/About'
 function App() {
   return (
     <div className="App">
-      <div className='nav'>
-        <div className='app-name'><Link to='/'><h1>TV Watchlist App</h1></Link></div>
-        <ul>
+      <div className='nav' style={{display:'grid', gridTemplateColumns:'repeat(2, 1fr)', marginBottom:'5%', borderBottom:'solid 1px black'}}>
+        <div className='app-name' style={{marginLeft:'1%', }} ><Link to='/'><h1 style={{border:'1px solid black'}}>TV Watchlist App</h1></Link></div>
+        <ul style ={{display:'flex', flexDirection:'row', justifyContent:'space-between', listStyleType:'none', marginRight:'7%', marginTop:'5%'}}>
           <li><Link to='/users'>Users</Link></li>
           <li><Link to='/shows'>Shows</Link></li>
           <li><Link to='/shows/add'>Add Show</Link></li>
