@@ -6,6 +6,7 @@ import Users from './Components/Users';
 import Shows from './Components/Shows';
 import AddShow from './Components/AddShow';
 import About from './Components/About'
+import UserProfile from './Components/UserProfile';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <div className='nav' style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', marginBottom: '5%', borderBottom: 'solid 1px black' }}>
         <div className='app-name' style={{ marginLeft: '1%', }} >
           <Link to='/'>
-            <h1 style={{ border: '1px solid black' }}>TV Watchlist App</h1>
+            <h1>TV Watchlist App</h1>
           </Link>
         </div>
         <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', listStyleType: 'none', marginRight: '7%', marginTop: '5%' }}>
@@ -28,6 +29,10 @@ function App() {
       <Switch>
         <Route exact path='/users'>
           <Users />
+        </Route>
+
+        <Route exact path='/users/:id'>
+        <UserProfile/>
         </Route>
 
         <Route exact path='/shows'>
@@ -45,6 +50,7 @@ function App() {
         <Route exact path='/'>
           <Landing />
         </Route>
+
       </Switch>
     </div>
   );
