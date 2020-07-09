@@ -21,8 +21,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async(req, res, next)=>{
   let id = req.params.id
+  console.log('id:', id)
   try{
-    let userById = userQueries.getUsersById(id)
+    let userById = await userQueries.getUsersById(id)
     res.json({
       payload: userById,
       message: 'Success. User has been retrieved.'
