@@ -22,7 +22,7 @@ const Shows = () => {
         <ShowsCard
         title={el.title}
         show_img={el.img_url}
-        genre={el.genre_id}
+        genre={el.genre_name}
         />)
 
     return (
