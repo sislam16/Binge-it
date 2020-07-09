@@ -7,6 +7,7 @@ import Shows from './Components/Shows';
 import AddShow from './Components/AddShow';
 import About from './Components/About'
 import UserProfile from './Components/UserProfile';
+import WatchShow from './Components/WatchShow';
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
         </Route>
 
         <Route exact path='/users/:id'>
-        <UserProfile/>
+          <UserProfile />
         </Route>
 
         <Route exact path='/shows'>
@@ -41,6 +42,10 @@ function App() {
 
         <Route exact path='/shows/add'>
           <AddShow />
+        </Route>
+
+        <Route exact path='/shows/:show_id'>
+          <WatchShow />
         </Route>
 
         <Route exact path='/about'>

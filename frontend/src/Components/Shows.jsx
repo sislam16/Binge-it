@@ -20,6 +20,7 @@ const Shows = () => {
 
     const showsThumbnails = allShows.map(el=>
         <ShowsCard
+        id={el.id}
         title={el.title}
         show_img={el.img_url}
         genre={el.genre_name}

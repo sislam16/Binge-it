@@ -33,11 +33,19 @@ const AddShow = () => {
     }, [])
 
     const showOptions = allShows.map(el =>
-        <option>{el.title}</option>
+        <option value={el.id}>{el.title}</option>
     )
-    
-    const genreOptions = allGenres.map(el=>
+
+    const genreOptions = allGenres.map(el =>
         <option>{el.genre_name}</option>)
+
+
+    const createNewShow = async () => {
+        try {
+        } catch (error) {
+            console.log('error')
+        }
+    }
 
     return (
         <div>
@@ -61,7 +69,7 @@ const AddShow = () => {
                 <select>
                     <option>---Select a Genre---</option>
                     {genreOptions}
-                    </select><br />
+                </select><br />
                 <button>Add</button>
             </form>
         </div>
