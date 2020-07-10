@@ -5,7 +5,9 @@ import { useHistory } from 'react-router-dom'
 const AddShow = () => {
     const [allShows, setAllShows] = useState([])
     const [selectedOption, setSelectedOption] = useState(0)
-    const [newShow, setNewShow] = useState({})
+    const [showUrl, setShowUrl] = useState('')
+    const [showGenre, setShowGenre] = useState('')
+    const [newShowTitle, setNewShowTitle] = useState('')
     const [allGenres, setAllGenres] = useState([])
     const history = useHistory()
 
@@ -36,56 +38,65 @@ const AddShow = () => {
     }, [])
 
     const showOptions = allShows.map(el => {
-        console.log(el.id)
         return (
             <option value={el.id}>{el.title}</option>
         )
     })
 
-
-
-    const genreOptions = allGenres.map(el =>
-        <option>{el.genre_name}</option>)
+    const genreOptions = allGenres.map(el => {
+        return (
+            <option value={el.id}>{el.genre_name}</option>
+        )
+    })
 
     const selectShowToWatch = (e) => {
         e.preventDefault()
         console.log(selectedOption)
-        if(selectedOption !==0){
-        history.push(`/shows/${selectedOption}`)
+        if (selectedOption !== 0) {
+            history.push(`/shows/${selectedOption}`)
         }
     }
 
     const createNewShow = async () => {
+        
         try {
+
         } catch (error) {
             console.log('error')
         }
     }
 
-    const updateOption = (e) => {
+    const updateShowOption = (e) => {
         e.preventDefault()
         setSelectedOption(e.target.value)
     }
+
+    const selectGenre = (e) => {
+        e.preventDefault()
+        setShowGenre(e.target.value)
+    }
+
+
     return (
         <div>
             <h1>Add Show</h1>
             <form className='existing' onSubmit={selectShowToWatch}>
                 <h3>Start Watching Show</h3>
-                <select onChange={updateOption}>
+                <select onChange={updateShowOption}>
                     <option>---All Shows---</option>
                     {showOptions}
                 </select><br />
                 <button >Start Watching</button><br />
             </form>
 
-            <form className='addNew'>
+            <form className='addNew' onSubmit={createNewShow}>
                 <h3>Or add a new Show</h3>
                 <label>Show Image URL</label><br />
-                <input type="text" placeholder='url' /> <br />
+                <input type="text" placeholder='url' onChange={e => setShowUrl(e.target.value)} /> <br />
                 <label> Show Name</label><br />
-                <input type="text" placeholder='Name' /><br />
+                <input type="text" placeholder='Name' onChange={e => setNewShowTitle(e.target.value)} /><br />
                 <label>Genre</label> <br />
-                <select>
+                <select onChange={selectGenre}>
                     <option>---Select a Genre---</option>
                     {genreOptions}
                 </select><br />
