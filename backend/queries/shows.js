@@ -1,7 +1,7 @@
 const db = require('../database/db')
 
 const getAllShows = async () => {
-    return await db.any(`SELECT * FROM shows JOIN genres ON shows.genre_id=genres.id;`)
+    return await db.any(`SELECT shows.id, title, img_url, genre_name FROM shows JOIN genres ON shows.genre_id=genres.id;`)
 }
 
 const getShowsById = async (id) => {
