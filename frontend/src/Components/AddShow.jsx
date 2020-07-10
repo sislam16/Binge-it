@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 const AddShow = () => {
     const [allShows, setAllShows] = useState([])
+    const [selectedOption, setSelectedOption] = useState(0)
     const [newShow, setNewShow] = useState({})
     const [allGenres, setAllGenres] = useState([])
+    const history = useHistory()
 
     useEffect(() => {
         const getAllShows = async () => {
             try {
                 let { data } = await axios.get('/shows')
                 setAllShows(data.payload)
-                console.log('shows', data)
+                console.log('shows', data.payload)
             } catch (error) {
                 console.log('error:', error)
             }
@@ -32,13 +35,25 @@ const AddShow = () => {
         getAllGenres()
     }, [])
 
-    const showOptions = allShows.map(el =>
-        <option value={el.id}>{el.title}</option>
-    )
+    const showOptions = allShows.map(el => {
+        console.log(el.id)
+        return (
+            <option value={el.id}>{el.title}</option>
+        )
+    })
+
+
 
     const genreOptions = allGenres.map(el =>
         <option>{el.genre_name}</option>)
 
+    const selectShowToWatch = (e) => {
+        e.preventDefault()
+        console.log(selectedOption)
+        if(selectedOption !==0){
+        history.push(`/shows/${selectedOption}`)
+        }
+    }
 
     const createNewShow = async () => {
         try {
@@ -47,16 +62,20 @@ const AddShow = () => {
         }
     }
 
+    const updateOption = (e) => {
+        e.preventDefault()
+        setSelectedOption(e.target.value)
+    }
     return (
         <div>
             <h1>Add Show</h1>
-            <form className='existing'>
+            <form className='existing' onSubmit={selectShowToWatch}>
                 <h3>Start Watching Show</h3>
-                <select>
+                <select onChange={updateOption}>
                     <option>---All Shows---</option>
                     {showOptions}
                 </select><br />
-                <button>Start Watching</button><br />
+                <button >Start Watching</button><br />
             </form>
 
             <form className='addNew'>
