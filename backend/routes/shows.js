@@ -34,21 +34,17 @@ router.get('/:id', async(req, res, next)=>{
 })
 
 router.post('/', async(req, res, next)=>{
-    const {title, img_url, user_id, genre_id} = req.body
-    let show ={
-        title, 
-        img_url, 
-        user_id, 
-        genre_id
-    }
-
+    const {title, img_url, genre_id} = req.body
+   
+console.log('ok')
     try{
-        let newShow = await showsQueries.createShow(show)
+        let newShow = await showsQueries.createShow(title, img_url, genre_id)
         res.json({
             payload: newShow,
             message: 'Success. New show has been created.'
         })
     } catch(error){
+        console.log('err:', error)
         res.status(500).json({
             payload: null, 
             message: 'Error. Unable to post show.'
