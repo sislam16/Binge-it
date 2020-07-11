@@ -6,7 +6,7 @@ const AddShow = () => {
     const [allShows, setAllShows] = useState([])
     const [selectedOption, setSelectedOption] = useState(0)
     const [showUrl, setShowUrl] = useState('')
-    const [showGenre, setShowGenre] = useState('')
+    const [showGenre, setShowGenre] = useState(0)
     const [newShowTitle, setNewShowTitle] = useState('')
     const [allGenres, setAllGenres] = useState([])
     const history = useHistory()
@@ -57,12 +57,20 @@ const AddShow = () => {
         }
     }
 
-    const createNewShow = async () => {
-        
-        try {
+    const createNewShow = async (e) => {
+        e.preventDefault()
 
+        const newShow = {
+            title: newShowTitle,
+            img_url: showUrl,
+            user_id: 1,
+            genre_id: showGenre
+        }
+        try {
+            let postNewShow = await axios.post('/shows', newShow)
+            console.log(postNewShow)
         } catch (error) {
-            console.log('error')
+            console.log('error', error)
         }
     }
 
