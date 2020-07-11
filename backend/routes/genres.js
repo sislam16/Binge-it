@@ -3,7 +3,6 @@ const router = express.Router();
 const genreQueries = require('../queries/genres')
 
 router.get('/', async(req, res, next) =>{
-    console.log('genres')
     try{
         let allGenres = await genreQueries.getAllGenres()
         res.json({
@@ -19,7 +18,6 @@ router.get('/', async(req, res, next) =>{
 })
 
 router.post('/', async(req, res, next) =>{
-    console.log('post genre')
     try{
         let newGenre = await genreQueries.createGenre()
         res.json({
