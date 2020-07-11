@@ -8,11 +8,11 @@ const getShowsById = async (id) => {
     return await db.one(`SELECT * FROM shows WHERE id=$1;`, id)
 }
 
-const createShow = async (title, img_url, user_id, genre_id) => {
-    const insertQuery = `INSERT INTO shows(title, img_url, user_id, genre_id)
-    VALUES($1, $2, $3, $4)
-    RETURNING *`
-    return await db.one(insertQuery, [title, img_url, user_id, genre_id])
+const createShow = async (title, img_url, genre_id) => {
+    const insertQuery = `INSERT INTO shows(title, img_url, genre_id)
+    VALUES($1, $2, $3);`
+    console.log(insertQuery)
+    return await db.none(insertQuery, [title, img_url,  genre_id])
 }
 
 const showsByGenre = async (genre_id) => {
