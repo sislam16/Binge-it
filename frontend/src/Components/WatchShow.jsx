@@ -6,6 +6,7 @@ import axios from 'axios'
 const WatchShow = () => {
     const [comments, setComments] = useState([])
     const [currentShow, setCurrentShow] = useState({})
+    const [newComment, setNewComment] = useState('')
     const { show_id } = useParams()
 
     useEffect(() => {
@@ -20,7 +21,6 @@ const WatchShow = () => {
         getSelectedShow()
     }, [show_id])
 
-    console.log(currentShow)
     useEffect(() => {
         const getShowComments = async () => {
             try {
@@ -34,15 +34,28 @@ const WatchShow = () => {
     }, [])
 
     console.log('comments', comments)
-    // console.log('currShow:', currentShow)
 
     const showComments = comments.map(el =>
         <div>
-            <p style={{fontWeight:'bold'}}>{el.username}</p>
+            <p style={{ fontWeight: 'bold' }}>{el.username}</p>
             <p>{el.comment_body}</p>
         </div>
     )
-    
+
+    const postComment = async() => {
+        let comment = {
+            comment_body: newComment, 
+            user_id: 3, 
+            show_id: show_id
+        }
+        try {
+            let newComment = await axios.post('/comments', comment)
+            console.log('posting:', newComment)
+        } catch (error) {
+            console.log('err:', error)
+        }
+    }
+
     return (
         <div>
             <div>
@@ -53,8 +66,8 @@ const WatchShow = () => {
 
             <div><p>Watched by:</p></div>
 
-            <form>
-                <input type='text' placeholder='comment' /> <button>Add</button>
+            <form onSubmit={postComment}>
+                <input type='text' placeholder='comment' onChange={e => setNewComment(e.target.value)} /> <button>Add</button>
             </form>
             {showComments}
         </div>
