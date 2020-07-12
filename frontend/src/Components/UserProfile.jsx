@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import ShowsCard from './ShowCard'
 import { Link, useParams } from 'react-router-dom'
 
 const UserProfile = () => {
@@ -37,12 +36,11 @@ const UserProfile = () => {
 
     const showCards = showList.map(el =>
         <div>
-            <h3>{el.title}</h3>
-            <img src={el.img_url} />
+          <Link to={`/shows/${el.id}`}><h3>{el.title}</h3></Link>
+            <img src={el.img_url} alt='show-img' />
             <p>{el.genre_name}</p>
         </div>)
 
-    console.log('showList:', showList)
     return (
         <div >
             <div classname='usr-info' style={{ display: 'flex', flexDirection: 'row' }}>
