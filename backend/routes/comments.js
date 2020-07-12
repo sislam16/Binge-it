@@ -1,15 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const commentsQueries = require('../queries/shows')
+const commentsQueries = require('../queries/comments')
 
-router.get('/', async(req, res, next) => {
+
+router.get('/show/:show_id', async(req, res, next) => {
+    const show_id = req.params.show_id
     try{
-        let getShowComments = await commentsQueries.getCommentsByShow()
+        let getShowComments = await commentsQueries.getCommentsByShow(show_id)
         res.json({
             payload: getShowComments,
             message: 'Success. Retrieved show comments.'
-        })
+        }) 
     } catch(error){
+        console.log(error)
         res.status(500).json({
             payload: null, 
             message: 'Error. Unable to retrieve comments.'
