@@ -52,6 +52,22 @@ console.log('ok')
     }
 })
 
+router.get('/watchers/:id', async(req,res,next)=>{
+    const id=req.params.id
+    try{
+        let showWatchers = await showsQueries.watchersByShowId(id)
+        res.json({
+            payload: showWatchers,
+            message: 'Success. Watchers have been retrieved.'
+        })
+    }catch(error){
+        res.status(500).json({
+            payload: null, 
+            message: 'Error. Unable to retrieve watchers.'
+        })
+    }
+})
+
 router.get('/genre/:genre_id', async(req, res, next)=>{
     try{
         let showsByGenre = await showsQueries.showsByGenre()

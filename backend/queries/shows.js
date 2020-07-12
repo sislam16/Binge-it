@@ -14,6 +14,15 @@ const getShowsById = async (id) => {
     GROUP BY shows.id, genres.genre_name;`, [id])
 }
 
+const watchersByShowId = async(show_id) =>{
+    return await db.any(`
+    SELECT username 
+    FROM shows_users 
+    JOIN users 
+    ON shows_users.user_id = users.id 
+    WHERE show_id = $1;`, [show_id])
+}
+
 const createShow = async (title, img_url, genre_id) => {
     const insertQuery = `INSERT INTO shows(title, img_url, genre_id)
     VALUES($1, $2, $3);`
@@ -42,5 +51,6 @@ module.exports = {
     getShowsById,
     showsByUser,
     createShow,
-    showsByGenre
+    showsByGenre, 
+    watchersByShowId
 }  
