@@ -7,6 +7,7 @@ const WatchShow = () => {
     const [comments, setComments] = useState([])
     const [currentShow, setCurrentShow] = useState({})
     const [newComment, setNewComment] = useState('')
+    const [allWatchers, setAllWatchers]=useState([])
     const { show_id } = useParams()
 
     useEffect(() => {
@@ -31,9 +32,27 @@ const WatchShow = () => {
             }
         }
         getShowComments()
-    }, [])
+    }, [show_id])
 
-    console.log('comments', comments)
+    useEffect(() =>{
+        const getWatchers = async()=>{
+            try{
+                let {data} = await axios.get(`/shows/watchers/${show_id}`)
+                console.log(data.payload)
+                setAllWatchers(data.payload)
+            } catch(error){
+                console.log('err:', error)
+            }
+        }
+        getWatchers()
+    }, [show_id])
+
+    console.log('hi',allWatchers)
+
+    const displayWatchers = allWatchers.map(el=>
+        JSON.parse(JSON.stringify(el.username)))
+        console.log(displayWatchers)
+    const displayUsername = displayWatchers.join(', ')
 
     const showComments = comments.map(el =>
         <div>
@@ -42,7 +61,7 @@ const WatchShow = () => {
         </div>
     )
 
-    const postComment = async() => {
+    const postComment = async(e) => {
         let comment = {
             comment_body: newComment, 
             user_id: 3, 
@@ -51,9 +70,19 @@ const WatchShow = () => {
         try {
             let newComment = await axios.post('/comments', comment)
             console.log('posting:', newComment)
+            
         } catch (error) {
             console.log('err:', error)
         }
+      
+    }
+
+    const handleComments = (e) =>{
+        let commentsCopy = [...comments]
+        setNewComment(e.target.value)
+        commentsCopy.push(newComment)
+        setComments(commentsCopy)
+        // setNewComment('')
     }
 
     return (
@@ -64,10 +93,10 @@ const WatchShow = () => {
                 <p>{currentShow.genre_name}</p>
             </div>
 
-            <div><p>Watched by:</p></div>
+<div><h6>Watched by:</h6>{displayUsername}</div>
 
             <form onSubmit={postComment}>
-                <input type='text' placeholder='comment' onChange={e => setNewComment(e.target.value)} /> <button>Add</button>
+                <input type='text' placeholder='comment' onChange={handleComments} /> <button>Add</button>
             </form>
             {showComments}
         </div>
