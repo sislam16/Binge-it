@@ -32,7 +32,7 @@ function App() {
           <Users />
         </Route>
 
-        <Route exact path='/users/:id'>
+        <Route exact path='/users/:user_id'>
           <UserProfile />
         </Route>
 
