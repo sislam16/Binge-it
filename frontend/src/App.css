@@ -1,8 +1,31 @@
 .App {
   text-align: center;
 }
-
+.nav{
+ background-color: #002366;
+}
 a{
   text-decoration: none;
   color: black;
+}
+.nav a{
+  color: white;
+}
+.users-container{
+margin-left: 32%;
+}
+.user-card{
+  width: 30vw;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-bottom: 3%;
+  align-items: center;
+}
+/* style={{display:'flex', flexDirection:'row',justifyContent:'center', marginBottom:'5%'}} */
+.usr-shows-container{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+.shows-poster{
+  height:20%;
 }
