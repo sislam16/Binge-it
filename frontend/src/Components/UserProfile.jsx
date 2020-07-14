@@ -26,6 +26,7 @@ const UserProfile = () => {
         const showByUser = async () => {
             try {
                 let { data } = await axios.get(`/shows/user/${user_id}`)
+                console.log(data.payload)
                 setShowList(data.payload)
             } catch (error) {
                 console.log('error:', error)
@@ -43,13 +44,12 @@ const UserProfile = () => {
 
     return (
         <div >
-            <div classname='usr-info' style={{ display: 'flex', flexDirection: 'row' }}>
+            <div classname='usr-info'>
                 <img src={userInfo.avatar_url} alt='user-img' />
                 <h2>{userInfo.username} Profile</h2>
             </div>
-
-            <div className='usr-shows'>
-                <h3>Watching</h3>
+            <h3>Watching</h3>
+            <div className='usr-shows-container'>
                 {showCards}
             </div>
         </div>
