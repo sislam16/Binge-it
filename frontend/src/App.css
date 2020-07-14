@@ -1,5 +1,9 @@
+html{
+  background-color:#EEEBEA;
+}
 .App {
   text-align: center;
+  font-family: 'Baloo Da 2', cursive;
 }
 .nav{
  background-color: #002366;
