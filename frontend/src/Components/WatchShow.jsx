@@ -6,8 +6,8 @@ import axios from 'axios'
 const WatchShow = () => {
     const [comments, setComments] = useState([])
     const [currentShow, setCurrentShow] = useState({})
-    const [newComment, setNewComment] = useState('')
-    const [allWatchers, setAllWatchers]=useState([])
+    const [commentText, setCommentText] = useState('')
+    const [allWatchers, setAllWatchers] = useState([])
     const { show_id } = useParams()
 
     useEffect(() => {
@@ -34,24 +34,23 @@ const WatchShow = () => {
         getShowComments()
     }, [show_id])
 
-    useEffect(() =>{
-        const getWatchers = async()=>{
-            try{
-                let {data} = await axios.get(`/shows/watchers/${show_id}`)
+    useEffect(() => {
+        const getWatchers = async () => {
+            try {
+                let { data } = await axios.get(`/shows/watchers/${show_id}`)
                 console.log(data.payload)
                 setAllWatchers(data.payload)
-            } catch(error){
+            } catch (error) {
                 console.log('err:', error)
             }
         }
         getWatchers()
     }, [show_id])
 
-    console.log('hi',allWatchers)
 
-    const displayWatchers = allWatchers.map(el=>
+    const displayWatchers = allWatchers.map(el =>
         JSON.parse(JSON.stringify(el.username)))
-        console.log(displayWatchers)
+
     const displayUsername = displayWatchers.join(', ')
 
     const showComments = comments.map(el =>
@@ -61,28 +60,27 @@ const WatchShow = () => {
         </div>
     )
 
-    const postComment = async(e) => {
+    const postComment = async (e) => {
+        e.preventDefault()
         let comment = {
-            comment_body: newComment, 
-            user_id: 3, 
+            comment_body: commentText,
+            user_id: 3,
             show_id: show_id
         }
         try {
-            let newComment = await axios.post('/comments', comment)
-            console.log('posting:', newComment)
-            
+            let {data} = await axios.post('/comments', comment)
+            console.log('posting:', data)
+            addComment(data.payload)
         } catch (error) {
             console.log('err:', error)
         }
-      
+
     }
 
-    const handleComments = (e) =>{
+    const addComment = (comment) => {
         let commentsCopy = [...comments]
-        setNewComment(e.target.value)
-        commentsCopy.push(newComment)
+        commentsCopy.push(comment)
         setComments(commentsCopy)
-        // setNewComment('')
     }
 
     return (
@@ -90,13 +88,13 @@ const WatchShow = () => {
             <div>
                 <h2>{currentShow.title}</h2>
                 <img src={currentShow.img_url} alt='poster' />
-                <p>{currentShow.genre_name}</p>
+                <p style={{ fontWeight: 'bold' }}>{currentShow.genre_name}</p>
             </div>
 
-<div><h6>Watched by:</h6>{displayUsername}</div>
+            <div><span style={{ fontWeight: 'bold' }}>Watched by: </span>{displayUsername}</div>
 
             <form onSubmit={postComment}>
-                <input type='text' placeholder='comment' onChange={handleComments} /> <button>Add</button>
+                <input type='text' placeholder='comment' onChange={e => setCommentText(e.target.value)} value={commentText}/> <button>Add</button>
             </form>
             {showComments}
         </div>
