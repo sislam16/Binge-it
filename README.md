@@ -9,6 +9,7 @@
 * CSS3. 
 
 ## Database Schema
+![database schema diagram](./assets/schema_diagram.png)
 
 ## API Endpoints
 - **Users**
