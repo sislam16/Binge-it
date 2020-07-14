@@ -9,7 +9,11 @@ const postComment = async(comment_body, user_id, show_id) =>{
     return await db.one(insertQuery, [comment_body, user_id, show_id])
 }
 
-module.exports ={
+const getCommentById = async(id) =>{
+return await db.one(`SELECT comments.id, comment_body, username FROM comments JOIN users ON comments.user_id = users.id WHERE comments.id =$1;`, id)
+}
+module.exports = {
     getCommentsByShow, 
-    postComment
+    postComment,
+    getCommentById
 }
