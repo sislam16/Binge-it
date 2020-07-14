@@ -1,5 +1,6 @@
 # Binge-it
 *A web application where users can post, comment on and favorite TV shows they are currently binge watching.*
+![screenshot of landing](./assets/binge-it.png)
 
 ## Technologies Used
 * Node.js & Express.js. For the HTTP backend server.
