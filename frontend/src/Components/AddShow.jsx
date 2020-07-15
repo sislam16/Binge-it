@@ -57,6 +57,22 @@ const AddShow = () => {
         }
     }
 
+    const addShowToList = async (e) =>{
+        e.preventDefault()
+        const newToUserList = {
+            show_id: selectedOption, 
+            user_id: 3
+        }
+        if(selectedOption !==0){
+        try{
+            let addShow = await axios.post(`/shows/users/${selectedOption}`, newToUserList)
+            console.log(addShow)
+        }catch(error){
+            console.log('err:', error)
+        }
+    } 
+    }
+
     const createNewShow = async (e) => {
         e.preventDefault()
 
@@ -88,7 +104,7 @@ const AddShow = () => {
     return (
         <div>
             <h1>Add Show</h1>
-            <form className='existing' onSubmit={selectShowToWatch}>
+            <form className='existing' onSubmit={addShowToList}>
                 <h3>Start Watching Show</h3>
                 <select onChange={updateShowOption}>
                     <option>---All Shows---</option>
