@@ -86,7 +86,7 @@ const WatchShow = () => {
     return (
         <div>
             <div>
-                <h2>{currentShow.title}</h2>
+                <h2 style={{fontWeight:'bolder', fontSize:'40px'}}>{currentShow.title}</h2>
                 <img src={currentShow.img_url} alt='poster' />
                 <p style={{ fontWeight: 'bold' }}>{currentShow.genre_name}</p>
             </div>
