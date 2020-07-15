@@ -36,7 +36,7 @@ const UserProfile = () => {
     }, [user_id])
 
     const showCards = showList.map(el =>
-        <div>
+        <div className='usr-shows-list'>
           <Link to={`/shows/${el.id}`}><h3>{el.title}</h3></Link>
             <img src={el.img_url} alt='show-img' />
             <p>{el.genre_name}</p>
@@ -45,10 +45,10 @@ const UserProfile = () => {
     return (
         <div >
             <div classname='usr-info'>
-                <img src={userInfo.avatar_url} alt='user-img' />
-                <h2>{userInfo.username} Profile</h2>
+            <h2 style={{fontSize:'40px', fontWeight:'bolder'}}>{userInfo.username} Profile</h2>
+            <img src={userInfo.avatar_url} alt='user-img' className='usr-avatar'/>
             </div>
-            <h3>Watching</h3>
+            <h3 style={{fontWeight:'bolder', fontSize:'24px'}}>Watching</h3>
             <div className='usr-shows-container'>
                 {showCards}
             </div>
