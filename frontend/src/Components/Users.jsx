@@ -28,7 +28,7 @@ const Users = () => {
 
     return (
         <div>
-            <h1>Users</h1>
+            <h1 style={{fontWeight:'bolder', fontSize:'40px'}}>Users</h1>
             <div className='users-container'>
             {usersThumbnail}
             </div>
