@@ -36,7 +36,6 @@ router.get('/:id', async(req, res, next)=>{
 router.post('/', async(req, res, next)=>{
     const {title, img_url, genre_id} = req.body
    
-console.log('ok')
     try{
         let newShow = await showsQueries.createShow(title, img_url, genre_id)
         res.json({
@@ -48,6 +47,23 @@ console.log('ok')
         res.status(500).json({
             payload: null, 
             message: 'Error. Unable to post show.'
+        })
+    }
+})
+
+router.post('/users/:show_id', async(req, res, next)=>{
+    const {user_id, show_id} = req.body
+    try{
+        let addShowToList = await showsQueries.addShowToUsers(user_id, show_id)
+        res.json({
+            payload: addShowToList, 
+            message: 'Success. Show has been added to user page.'
+        })
+    }catch(error){
+        console.log('err:', error)
+        res.status(500).json({
+            payload: null, 
+            message: 'Error. Unable to add show to list.'
         })
     }
 })
