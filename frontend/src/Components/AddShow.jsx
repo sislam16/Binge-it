@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
 
 const AddShow = () => {
     const [allShows, setAllShows] = useState([])
@@ -9,7 +8,6 @@ const AddShow = () => {
     const [showGenre, setShowGenre] = useState(0)
     const [newShowTitle, setNewShowTitle] = useState('')
     const [allGenres, setAllGenres] = useState([])
-    const history = useHistory()
 
     useEffect(() => {
         const getAllShows = async () => {
@@ -48,14 +46,6 @@ const AddShow = () => {
             <option value={el.id}>{el.genre_name}</option>
         )
     })
-
-    const selectShowToWatch = (e) => {
-        e.preventDefault()
-        console.log(selectedOption)
-        if (selectedOption !== 0) {
-            history.push(`/shows/${selectedOption}`)
-        }
-    }
 
     const addShowToList = async (e) =>{
         e.preventDefault()
