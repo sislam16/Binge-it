@@ -96,6 +96,10 @@ form button{
     flex-direction: row;
     justify-content: space-between;
   }
+  .user-card img{
+    margin-left: -15%;
+    margin-right: 10px;
+  }
   .all-shows{
     display:flex;
     flex-direction: column;
