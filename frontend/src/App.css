@@ -25,11 +25,85 @@ margin-left: 32%;
   margin-bottom: 3%;
   align-items: center;
 }
-/* style={{display:'flex', flexDirection:'row',justifyContent:'center', marginBottom:'5%'}} */
 .usr-shows-container{
   display:grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.usr-avatar{
+  height: 250px;
+}
+
+.usr-shows-list img{
+  height: 250px;
+}
+
+.usr-shows-list{
+  border: 1px black solid;
+  margin: 4%;
+  background-color: white;
+}
+
+.usr-shows-list h3:hover{
+  color: #002366;;
+}
+
+.all-shows{
+  display: grid;
   grid-template-columns: 1fr 1fr;
 }
 .shows-poster{
   height:20%;
+}
+
+.shows-card{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin: 3%;
+  background-color: white;
+  border: black 1px solid;
+}
+.shows-card img{
+  height: 80%;
+  margin-left: 12%;
+  margin-top: 6%;
+}
+.shows-card-text{
+  margin-right: 12%;
+}
+.shows-card-text h3:hover{
+  color: #002366;
+}
+
+form button{
+  font-family: 'Baloo Da 2', cursive;
+  background-color: #002366;
+  color:white;
+  padding: 2px 14px;
+}
+
+@media screen and (max-width: 620px) {
+  body {
+      display:inline;
+  }
+  .app-name{
+    font-size: 12px;
+  }
+  ul li{
+    font-size: 12px;
+  }
+  .user-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .all-shows{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+  }
+  .usr-shows-container{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+  }
 }
