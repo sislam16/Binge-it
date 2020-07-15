@@ -93,7 +93,7 @@ const AddShow = () => {
 
     return (
         <div>
-            <h1>Add Show</h1>
+            <h1 style={{fontWeight:'bolder', fontSize:'40px'}}>Add Show</h1>
             <form className='existing' onSubmit={addShowToList}>
                 <h3>Start Watching Show</h3>
                 <select onChange={updateShowOption}>
