@@ -27,9 +27,12 @@ const Shows = () => {
         />)
 
     return (
-        <div>
-            <h1>Shows</h1>
+        <div className='all-shows-container'>
+            <h1 style={{fontWeight:'bolder', fontSize:'40px'}}>Shows</h1>
+            <div className='all-shows'>
             {showsThumbnails}
+            </div>
+            
         </div>
     )
 }
