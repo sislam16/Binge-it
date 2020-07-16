@@ -13,7 +13,7 @@ const AddShow = () => {
         const getAllShows = async () => {
             try {
                 let { data } = await axios.get('/shows')
-                setAllShows(data.payload)
+                setAllShows(data.payload)                
                 console.log('shows', data.payload)
             } catch (error) {
                 console.log('error:', error)
@@ -81,12 +81,10 @@ const AddShow = () => {
     }
 
     const updateShowOption = (e) => {
-        e.preventDefault()
         setSelectedOption(e.target.value)
     }
 
     const selectGenre = (e) => {
-        e.preventDefault()
         setShowGenre(e.target.value)
     }
 
@@ -96,7 +94,7 @@ const AddShow = () => {
             <h1 style={{fontWeight:'bolder', fontSize:'40px'}}>Add Show</h1>
             <form className='existing' onSubmit={addShowToList}>
                 <h3>Start Watching Show</h3>
-                <select onChange={updateShowOption}>
+                <select onChange={updateShowOption} value={selectedOption}>
                     <option>---All Shows---</option>
                     {showOptions}
                 </select><br />
@@ -106,11 +104,11 @@ const AddShow = () => {
             <form className='addNew' onSubmit={createNewShow}>
                 <h3>Or add a new Show</h3>
                 <label>Show Image URL</label><br />
-                <input type="text" placeholder='url' onChange={e => setShowUrl(e.target.value)} /> <br />
+                <input type="text" placeholder='url' value={showUrl} onChange={e => setShowUrl(e.target.value)} /> <br />
                 <label> Show Name</label><br />
-                <input type="text" placeholder='Name' onChange={e => setNewShowTitle(e.target.value)} /><br />
+                <input type="text" placeholder='Name' value={newShowTitle} onChange={e => setNewShowTitle(e.target.value)} /><br />
                 <label>Genre</label> <br />
-                <select onChange={selectGenre}>
+                <select onChange={selectGenre} value={showGenre}>
                     <option>---Select a Genre---</option>
                     {genreOptions}
                 </select><br />
