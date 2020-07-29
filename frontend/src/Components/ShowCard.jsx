@@ -8,7 +8,7 @@ const ShowsCard = ({ show_img, title, genre, id }) => {
     useEffect(() => {
         const getWatchers = async () => {
             try {
-                let { data } = await axios.get(`/shows/watchers/${id}`)
+                let { data } = await axios.get(`/api/shows/watchers/${id}`)
                 console.log(data.payload)
                 setWatchers(data.payload)
             } catch (error) {

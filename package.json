@@ -1,0 +1,21 @@
+{
+  "name": "tv-watchlist-app-cta-retake",
+  "version": "1.0.0",
+  "description": "*A web application where users can post, comment on and favorite TV shows they are currently binge watching.* ![screenshot of landing](./assets/binge-it.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start":"cd backend && npm start",
+    "heroku-prebuild": "cd backend && npm install && ../frontend && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sislam16/CTA-Reassessment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sislam16/CTA-Reassessment/issues"
+  },
+  "homepage": "https://github.com/sislam16/CTA-Reassessment#readme"
+}

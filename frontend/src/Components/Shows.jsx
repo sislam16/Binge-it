@@ -8,7 +8,7 @@ const Shows = () => {
     useEffect(() => {
         const getAllShows = async () => {
             try {
-                let { data } = await axios.get('/shows')
+                let { data } = await axios.get('/api/shows')
                 setAllShows(data.payload)
                 console.log('shows', data.payload)
             } catch (error) {

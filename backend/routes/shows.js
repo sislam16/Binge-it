@@ -51,10 +51,10 @@ router.post('/', async(req, res, next)=>{
     }
 })
 
-router.post('/users/:show_id', async(req, res, next)=>{
+router.post('/users', async(req, res, next)=>{
     const {user_id, show_id} = req.body
     try{
-        let addShowToList = await showsQueries.addShowToUsers(user_id, show_id)
+        let addShowToList = await showsQueries.addShowToUsers(show_id, user_id)
         res.json({
             payload: addShowToList, 
             message: 'Success. Show has been added to user page.'

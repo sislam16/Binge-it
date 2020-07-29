@@ -13,7 +13,7 @@ const UserProfile = () => {
     useEffect(() => {
         const currentUser = async () => {
             try {
-                let { data } = await axios.get(`/users/${user_id}`)
+                let { data } = await axios.get(`/api/users/${user_id}`)
                 setUserInfo(data.payload)
             } catch (error) {
                 console.log('error', error)
@@ -25,7 +25,7 @@ const UserProfile = () => {
     useEffect(() => {
         const showByUser = async () => {
             try {
-                let { data } = await axios.get(`/shows/user/${user_id}`)
+                let { data } = await axios.get(`/api/shows/user/${user_id}`)
                 console.log(data.payload)
                 setShowList(data.payload)
             } catch (error) {

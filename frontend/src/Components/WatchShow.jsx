@@ -13,7 +13,7 @@ const WatchShow = () => {
     useEffect(() => {
         const getSelectedShow = async () => {
             try {
-                let { data } = await axios.get(`/shows/${show_id}`)
+                let { data } = await axios.get(`/api/shows/${show_id}`)
                 setCurrentShow(data.payload[0])
             } catch (error) {
                 console.log('error', error)
@@ -25,7 +25,7 @@ const WatchShow = () => {
     useEffect(() => {
         const getShowComments = async () => {
             try {
-                let { data } = await axios.get(`/comments/show/${show_id}`)
+                let { data } = await axios.get(`/api/comments/show/${show_id}`)
                 setComments(data.payload)
             } catch (error) {
                 console.log('err:', error)
@@ -37,7 +37,7 @@ const WatchShow = () => {
     useEffect(() => {
         const getWatchers = async () => {
             try {
-                let { data } = await axios.get(`/shows/watchers/${show_id}`)
+                let { data } = await axios.get(`/api/shows/watchers/${show_id}`)
                 console.log(data.payload)
                 setAllWatchers(data.payload)
             } catch (error) {

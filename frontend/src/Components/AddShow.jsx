@@ -12,7 +12,7 @@ const AddShow = () => {
     useEffect(() => {
         const getAllShows = async () => {
             try {
-                let { data } = await axios.get('/shows')
+                let { data } = await axios.get('/api/shows')
                 setAllShows(data.payload)                
                 console.log('shows', data.payload)
             } catch (error) {
@@ -25,7 +25,7 @@ const AddShow = () => {
     useEffect(() => {
         const getAllGenres = async () => {
             try {
-                let { data } = await axios.get('/genres')
+                let { data } = await axios.get('/api/genres')
                 setAllGenres(data.payload)
                 console.log('genres', data)
             } catch (error) {
@@ -55,7 +55,7 @@ const AddShow = () => {
         }
         if(selectedOption !==0){
         try{
-            let addShow = await axios.post(`/shows/users/${selectedOption}`, newToUserList)
+            let addShow = await axios.post(`/api/shows/users`, newToUserList)
             console.log(addShow)
         }catch(error){
             console.log('err:', error)
@@ -73,7 +73,7 @@ const AddShow = () => {
             genre_id: showGenre
         }
         try {
-            let postNewShow = await axios.post('/shows', newShow)
+            let postNewShow = await axios.post('/api/shows', newShow)
             console.log(postNewShow)
         } catch (error) {
             console.log('error', error)

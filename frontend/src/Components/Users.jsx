@@ -8,7 +8,7 @@ const Users = () => {
     useEffect(() => {
         const getAllUsers = async () => {
             try {
-                let { data } = await axios.get('/users')
+                let { data } = await axios.get('/api/users')
                 console.log(data.payload)
                 setAllUsers(data.payload)
             } catch (error) {
